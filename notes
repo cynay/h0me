@@ -1,0 +1,17 @@
+-=[ NOTES ]=-
+-- SSH & VPN --
+ssh caffein.ch -p 443 -D 1337
+sudo openconnect --juniper 212.254.190.173
+sudo ~/Downloads/forticlientsslvpn/forticlientsslvpn_cli --server 217.192.250.52:443 --vpnuser uschney1
+
+rpm -Uhv package.rpm // install rpm
+google-drive-ocamlfuse ./gDrive	// mount google-drive
+
+-- Citrix --
+Ctrl+F2 ; WIN+SHIFT+PG_DN / moves to next desktop, first to send to Host
+
+-=[ FFHS ]=-
+wlan: ffhsinfgb5524
+
+-=[ honeeepi ]=-
+ssh: pi@192.168.66.106 -p 444
