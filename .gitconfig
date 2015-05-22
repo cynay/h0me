@@ -1,3 +1,5 @@
 [user]
 	name = Yannic Schneider
 	email = cynays@gmail.com
+[push]
+	default = simple
