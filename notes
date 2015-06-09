@@ -6,6 +6,7 @@ sudo ~/Downloads/forticlientsslvpn/forticlientsslvpn_cli --server 217.192.250.52
 
 rpm -Uhv package.rpm // install rpm
 google-drive-ocamlfuse ./gDrive	// mount google-drive
+ffmpeg -i <IN>.m4a -acodec libmp3lame -ab 128k <OUT>.mp3
 
 -- Citrix --
 Ctrl+F2 ; WIN+SHIFT+PG_DN / moves to next desktop, first to send to Host
