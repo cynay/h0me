@@ -15,5 +15,5 @@ export PATH
 CLASSPATH=/home/cyn/Cod1ng/GitHub/jGrep/bin:$CLASSPATH
 export CLASSPATH
 
-#fortune bofh-excuses | cowsay -f tux
-fortune | cowsay -f tux
+fortune yogi-tea-bag-quotes | cowsay -f tux
+#fortune | cowsay -f tux

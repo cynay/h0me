@@ -2,11 +2,13 @@
 -- SSH & VPN --
 ssh caffein.ch -p 443 -D 1337
 sudo openconnect --juniper 212.254.190.173
-sudo ~/Downloads/forticlientsslvpn/forticlientsslvpn_cli --server 217.192.250.52:443 --vpnuser uschney1
+~/Downloads/forticlientsslvpn/64bit/forticlientsslvpn_cli --server 217.192.240.52:443 --vpnuser uschney1
+
+xfreerdp /v:172.17.0.46 /size:1824x1026 /u:admin /admin /drive:USB,/run/media/cyn/TEMP
 
 rpm -Uhv package.rpm // install rpm
 google-drive-ocamlfuse ./gDrive	// mount google-drive
-ffmpeg -i <IN>.m4a -acodec libmp3lame -ab 128k <OUT>.mp3
+ffmpeg -i <IN>.m4a -acodec libmp3lame -ab 256k <OUT>.mp3
 
 -- Citrix --
 Ctrl+F2 ; WIN+SHIFT+PG_DN / moves to next desktop, first to send to Host
