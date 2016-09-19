@@ -1,0 +1,60 @@
+https://sanctum.geek.nz/arabesque/managing-dot-files-with-git/
+
+Creating the repository
+
+To start, we’ll create a directory called .dotfiles to hold all our configuration, and initialise it as an empty Git repository.
+
+$ mkdir .dotfiles
+$ cd .dotfiles
+$ git init
+
+Then we’ll copy in the configuration files we want to track, and drop symbolic links to them from where they used to be, so that the applications concerned read them correctly.
+
+$ cd
+$ mv .vim .dotfiles/vim
+$ mv .vimrc .dotfiles/vimrc
+$ mv .screenrc .dotfiles/screenrc
+$ mv .gitconfig .dotfiles/gitconfig
+$ ln -s .dotfiles/vim .vim
+$ ln -s .dotfiles/vimrc .vimrc
+$ ln -s .dotfiles/screenrc .screenrc
+$ ln -s .dotfiles/gitconfig .gitconfig
+
+Next, we drop into the .dotfiles directory, add everything to the staging area, and commit it:
+
+$ cd .dotfiles
+$ git add *
+$ git commit -m "First commit of dotfiles."
+
+And that’s it, we’ve now got all four of those files tracked in our local Git repository.
+Using a remote repository
+
+With that done, if you want to take the next step of having a central location where you can always get your configuration from any machine with an internet connection, you can set up a repository for your dot files on GitHub, with a free account. The instructions for doing this on GitHub itself are great, so just follow them for your existing repository. On my machine, the results look like this:
+
+$ git remote add origin git@github.com:tejr/dotfiles.git
+$ git push -u origin master
+
+Note that I’m pushing using a public key setup, which you can arrange in the SSH Public Keys section of your GitHub account settings.
+
+With this done, if you update your configuration at any time, first add and commit the changes to your local repository, and then all you need to do to update the GitHub version as well is:
+
+$ git push
+
+Cloning onto another machine
+
+Having done this, when you’re working with a new machine onto which you’d like to clone your configuration, you clone the repository from GitHub, and delete any existing versions of those files in your home directory to replace them with symbolic links into your repository, like so:
+
+$ git clone git@github.com:tejr/dotfiles.git .dotfiles
+$ rm -r .vim .vimrc .screenrc .gitconfig
+$ ln -s .dotfiles/vim .vim
+$ ln -s .dotfiles/vimrc .vimrc
+$ ln -s .dotfiles/screenrc .screenrc
+$ ln -s .dotfiles/gitconfig .gitconfig
+
+Finally, if you come back to use this machine later after you’ve tweaked these configuration files a bit and pushed them to GitHub, you can update them by just running a pull:
+
+$ git pull
+
+Making things easier
+
+This ends up taking a lot of annoyances out of my day, as I know on any machine on which I frequently work, all I need to do is drop to my .dotfiles directory and run a git pull to get the most recent version of my configurations. This ends up being a lot better than manually running scp or rsync calls to keep things up to date.
