@@ -20,7 +20,8 @@ set mouse=r
 
 ">> Hotkeys
 set pastetoggle=<F3>
+nmap <F2> :NERDTreeToggle<CR>
 
 ">> Addons
 call pathogen#infect()
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
