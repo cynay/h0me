@@ -1,0 +1,77 @@
+---
+- hosts: all
+  remote_user: root
+  vars:
+    deploy_user_name: cyn
+
+  tasks:
+    - name: add cyn to doas
+      lineinfile:
+        dest: /etc/doas.conf
+        create: yes
+        regexp: 'permit nopass keepenv cyn'
+        line: 'permit nopass keepenv cyn'
+
+    - name: add email to aliases
+      become: yes
+      lineinfile: dest=/etc/mail/aliases
+                  line="root{{':'}} cynays@gmail.com
+                  insertafter=EOF
+                  state=present
+                  regexp="^root.*"
+    
+    - name: install required packages
+      become: yes
+      openbsd_pkg:
+        state: present
+        name:
+          - vim
+          - htop
+          - curl
+          - wget
+          - git
+          - kcgi
+          - python-3.6
+          - py3-pip
+          - py3-setuptools
+          - rsync
+          - screen
+          
+    - name: disallow login with empty pw
+      become: yes
+      lineinfile: dest=/etc/ssh/sshd_config
+                  regexp="^PermitEmptyPasswords"
+                  line="PermitEmptyPasswords no"
+                  state=present
+      notify: restart ssh
+   
+    - name: disallow root SSH access
+      become: yes
+      lineinfile: dest=/etc/ssh/sshd_config
+                  regexp="^PermitRootLogin"
+                  line="PermitRootLogin without-password"
+                  state=present
+      notify: restart ssh
+ 
+    - name: set timezone
+      become: yes
+      timezone:
+        name=Europe/Amsterdam
+
+    - name: copy motd
+      become: yes
+      copy:
+        src=motd.template
+        dest=/etc/motd
+        owner=root
+        group=operator
+        mode=0444
+
+    - name: download openup
+      become: yes
+      get_url:
+        url: https://stable.mtier.org/openup
+        validate_certs: no # bug
+        dest: /usr/local/bin/openup
+        mode: 0755
+
