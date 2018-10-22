@@ -1,11 +1,13 @@
 ---
 - hosts: all
-  remote_user: root
+  remote_user: cyn
+  become_method: doas
   vars:
     deploy_user_name: cyn
 
   tasks:
     - name: add cyn to doas
+      become: yes
       lineinfile:
         dest: /etc/doas.conf
         create: yes
@@ -15,11 +17,11 @@
     - name: add email to aliases
       become: yes
       lineinfile: dest=/etc/mail/aliases
-                  line="root{{':'}} cynays@gmail.com
+                  line="root{{':'}} cynays@gmail.com"
                   insertafter=EOF
                   state=present
                   regexp="^root.*"
-    
+
     - name: install required packages
       become: yes
       openbsd_pkg:
@@ -31,12 +33,12 @@
           - wget
           - git
           - kcgi
-          - python-3.6
+          - python-3.6.4p0
           - py3-pip
           - py3-setuptools
           - rsync
           - screen
-          
+
     - name: disallow login with empty pw
       become: yes
       lineinfile: dest=/etc/ssh/sshd_config
@@ -44,7 +46,7 @@
                   line="PermitEmptyPasswords no"
                   state=present
       notify: restart ssh
-   
+
     - name: disallow root SSH access
       become: yes
       lineinfile: dest=/etc/ssh/sshd_config
@@ -52,7 +54,7 @@
                   line="PermitRootLogin without-password"
                   state=present
       notify: restart ssh
- 
+
     - name: set timezone
       become: yes
       timezone:
@@ -75,3 +77,10 @@
         dest: /usr/local/bin/openup
         mode: 0755
 
+
+  handlers:
+    - name: restart ssh
+      service:
+        name: sshd
+        state: restarted
+      become: yes
