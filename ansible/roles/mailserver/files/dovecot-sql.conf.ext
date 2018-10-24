@@ -1,0 +1,8 @@
+driver = sqlite
+connect = /etc/mail/mail.sqlite
+default_pass_scheme = BLF-CRYPT
+
+password_query = \
+  SELECT password \
+  FROM credentials \
+  WHERE email = '%u' AND active = 'Y'

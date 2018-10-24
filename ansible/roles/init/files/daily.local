@@ -1,0 +1,13 @@
+next_part "Checking for system updates:"
+/usr/local/bin/openup -c
+
+# TODO
+# 
+#next_part "Showing pf table counts:"
+#echo -n "Bruteforce:\t\t" 	&& pfctl -T show -t bruteforce | wc -l
+#echo -n "bgp_spamd_bypass:\t"	&& pfctl -T show -t bgp_spamd_bypass | wc -l
+#echo -n "bgp_spamd:\t\t" 	&& pfctl -T show -t bgp_spamd | wc -l
+#echo -n "spamd_white:\t\t" 	&& pfctl -T show -t spamd-white | wc -l
+#echo -n "spamd:\t\t\t"		&& pfctl -T show -t spamd | wc -l
+#echo -n "nospamd:\t\t"		&& pfctl -T show -t nospamd | wc -l
+

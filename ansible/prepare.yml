@@ -1,0 +1,29 @@
+# vim: set ft=yaml.ansible:
+---
+- hosts: all
+  remote_user: root
+  vars:
+    deploy_user_name: deploy
+    deploy_public_keys:
+      - ~/.ssh/id_rsa.pub
+  tasks:
+    - name: add deploy user
+      user: name={{ deploy_user_name }} shell=/bin/ksh
+
+    - name: add authorized keys for deploy user
+      authorized_key: user={{ deploy_user_name }}
+                      key='{{ item }}'
+      with_file: "{{ deploy_public_keys }}"
+
+    - name: add authorized keys for root user
+      authorized_key: user=root
+                      key='{{ item }}'
+      with_file: "{{ deploy_public_keys }}"
+
+    - name: add deploy to doas
+      lineinfile:
+        dest: /etc/doas.conf
+        create: yes
+        regexp: 'permit nopass keepenv deploy'
+        line: 'permit nopass keepenv deploy'
+

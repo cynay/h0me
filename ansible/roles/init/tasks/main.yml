@@ -1,0 +1,118 @@
+---
+- name: add email to aliases
+  become: yes
+  lineinfile: dest=/etc/mail/aliases
+              line="root{{':'}} cynays@gmail.com"
+              insertafter=EOF
+              state=present
+              regexp="^root.*"
+  notify: new aliases
+
+- name: copy installurl
+  become: yes
+  copy:
+    src=installurl
+    dest=/etc/installurl
+    owner=root
+    group=wheel
+    mode=0664
+
+- name: install required packages
+  become: yes
+  openbsd_pkg:
+    state: present
+    name:
+      - vim--no_x11
+      - htop
+      - curl
+      - wget
+      - git
+      - kgci
+      - python--%3.6
+      - py3-pip
+      - py3-setuptools
+      - rsync
+      - screen--
+
+- name: disallow password authentication
+  become: yes
+  lineinfile: dest=/etc/ssh/sshd_config
+              regexp="^PasswordAuthentication"
+              line="PasswordAuthentication no"
+              state=present
+  notify: restart ssh
+
+- name: disallow login with empty pw
+  become: yes
+  lineinfile: dest=/etc/ssh/sshd_config
+              regexp="^PermitEmptyPasswords"
+              line="PermitEmptyPasswords no"
+              state=present
+  notify: restart ssh
+
+- name: disallow root SSH access
+  become: yes
+  lineinfile: dest=/etc/ssh/sshd_config
+              regexp="^PermitRootLogin"
+              line="PermitRootLogin without-password"
+              state=present
+  notify: restart ssh
+
+- name: set timezone
+  become: yes
+  timezone:
+    name=Europe/Amsterdam
+
+- name: copy OpenNTPd config
+  become: yes
+  copy:
+    src=ntpd.conf
+    dest=/etc/ntpd.conf
+    owner=root
+    group=wheel
+    mode=0644
+  notify: restart ntpd
+
+- name: enable openntpd
+  become: yes
+  service:
+    name: ntpd
+    enabled: yes
+    args: '-s'
+  notify: restart ntpd
+
+- name: copy global profile
+  become: yes
+  copy:
+    src=profile
+    dest=/etc/profile
+    owner=root
+    group=wheel
+    mode=0664
+
+- name: copy motd
+  become: yes
+  copy:
+    src=motd.{{inventory_hostname}}
+    dest=/etc/motd
+    owner=root
+    group=operator
+    mode=0444
+
+- name: download openup
+  become: yes
+  get_url:
+    url: https://stable.mtier.org/openup
+    validate_certs: no # there seems to be a bug that requires this
+    dest: /usr/local/bin/openup
+    mode: 0755
+
+- name: copy daily.local
+  become: yes
+  copy:
+    src=daily.local
+    dest=/etc/daily.local
+    owner=root
+    group=wheel
+    mode=0644
+

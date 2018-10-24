@@ -1,0 +1,14 @@
+# vim: set ft=yaml.ansible:
+---
+- hosts: all
+  user: deploy
+  become_method: doas
+  roles:
+    - init
+
+- hosts: aws
+  user: deploy
+  become_method: doas
+  roles:
+    - mailserver
+
