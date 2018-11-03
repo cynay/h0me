@@ -1,5 +1,9 @@
 [user]
-	name = Yannic Schneider
-	email = cynays@gmail.com
+    name = Yannic Schneider
+    email = cynays@gmail.com
+    username = cynay
 [push]
-	default = simple
+    default = simple
+[alias]
+    a = add --all
+
