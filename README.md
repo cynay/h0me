@@ -7,14 +7,14 @@ My h0me stuff and dot-files repository
 * scripts
 
 ## dotfiles
-> .bashrc
-> .gitconfig
-> .gitignore
-> .vimrc
-> .tmux.conf
+> * .bashrc
+> * .gitconfig
+> * .gitignore
+> * .vimrc
+> * .tmux.conf
 >> OLD
->> .xmobarrc
+>> * .xmobarrc
 
 ## Usage
-* git clone <ThisRepo>
-* ln -s h0me/.<file> .<file>
+* git clone http://repo.git
+* ln -s h0me/.file .file
