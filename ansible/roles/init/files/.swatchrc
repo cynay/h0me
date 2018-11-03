@@ -1,0 +1,2 @@
+watchfor /for.(.*.from.[0-9].*).port/
+    exec command /home/cyn/code/cyneye/cyneye_bot-telegram.sh ">>HOSTNAME login: $1"
