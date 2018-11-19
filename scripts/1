@@ -1,0 +1,14 @@
+#!/bin/sh
+
+INPUT=$1
+
+
+IP=$(echo $INPUT | cut -d . -f 1)
+PORT=$(echo $INPUT | cut -d . -f 2)
+
+HEXIP=$(printf "%#x\n" $IP)
+echo $HEXIP
+
+OCT1=$(echo $HEXIP | cut -b 1)
+echo $OCT1
+
