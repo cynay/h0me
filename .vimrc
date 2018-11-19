@@ -29,3 +29,4 @@ nmap <F2> :NERDTreeToggle<CR>
 call pathogen#infect()
 "autocmd vimenter * NERDTree
 
+set paste

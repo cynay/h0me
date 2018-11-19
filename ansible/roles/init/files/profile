@@ -5,4 +5,3 @@ export PS1="[\u@\h] \w \\$ \[$(tput -T xterm-256color sgr0)\]"
 
 alias ll='ls -lh'
 alias l='ls -lah'
-alias vim=nvim
