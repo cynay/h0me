@@ -8,8 +8,8 @@ PORT=$(echo $INPUT | cut -d . -f 2)
 PCOOKIE=$(echo $INPUT | cut -d . -f 3)
 
 HEXIP=$(printf "%#x\n" $IP)
-#echo $HEXIP
-
+echo $HEXIP
+HEXIP=0x0db4b992
 OCT1=0x$(echo $HEXIP | cut -b 3-4)
 OCT2=0x$(echo $HEXIP | cut -b 5-6)
 OCT3=0x$(echo $HEXIP | cut -b 7-8)
