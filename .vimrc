@@ -8,6 +8,8 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set colorcolumn=80
+set relativenumber
+set cursorline
 
 ">> Coloring
 ":colorscheme elflord
@@ -16,6 +18,8 @@ let g:airline_theme='deus'
 
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 let &colorcolumn=join(range(81,999),",")
+
+highlight CursorLine cterm=inverse
 
 "enable mouse, if you need select copy either hold shift or set to 'v'
 set mouse=r
@@ -29,3 +33,4 @@ nmap <F2> :NERDTreeToggle<CR>
 call pathogen#infect()
 "autocmd vimenter * NERDTree
 
+set paste
