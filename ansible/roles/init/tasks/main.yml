@@ -27,12 +27,24 @@
       - curl
       - wget
       - git
-      - kgci
+#      - kgci
       - python--%3.6
       - py3-pip
       - py3-setuptools
-      - rsync
+      - rsync--
       - screen--
+
+- name: create python symlinks
+  file: 
+    src: "/usr/local/bin/python3.6"
+    dest: "/usr/local/bin/python"
+    state: link
+
+- name: create python pip symlinks
+  file: 
+    src: "/usr/local/bin/pip3.6"
+    dest: "/usr/local/bin/pip3"
+    state: link
 
 - name: disallow password authentication
   become: yes
