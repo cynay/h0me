@@ -2,18 +2,18 @@
 " cYn VIM config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ">> Basic formating
-set number
-set autoindent
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set colorcolumn=80
-set relativenumber
-set cursorline
+set number              " Show numbers
+set autoindent          " align the new line indent with the previous line
+set shiftwidth=4        " operation >> indents 4 cols
+set softtabstop=4       " insert/delete 4 spaces when hitting TAB/BKSP
+set expandtab           " insert spaces when hitting TABs
+set colorcolumn=80      " Different Color for column 
+set relativenumber      " show relative line numbers
+set cursorline          " different color for active line
 
 ">> Coloring
-":colorscheme elflord
-:colorscheme deus
+:colorscheme elflord
+":colorscheme deus
 let g:airline_theme='deus'
 
 highlight ColorColumn ctermbg=235 guibg=#2c2d27

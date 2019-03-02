@@ -6,6 +6,12 @@
   roles:
     - init
 
+- hosts: greed
+  user: deploy
+  become_method: doas
+  roles: 
+    - web
+
 - hosts: aws
   user: deploy
   become_method: doas

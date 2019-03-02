@@ -1,0 +1,29 @@
+---
+- name: install required packages
+  become: yes
+  openbsd_pkg:
+    state: present
+    name:
+      - curl
+      - wget
+      - git
+      - python--%3.6
+      - py3-pip
+      - py3-setuptools
+
+- name: install pip virtualenv
+  pip:
+    name: virtualenv
+
+- name: Copy GIT Repo
+  become_user: cyn
+  git:
+    repo: 'https://{{gituser}}:{{gitpass}}@gitea.tostr.io/cyn/CryptoPi.git'
+    dest: /home/cyn/code
+
+- name: install pip packages
+  become: true
+  pip:
+    requirements: requirements.txt
+    virtualenv: /home/cyn/code/CryptoPi/venv
+
