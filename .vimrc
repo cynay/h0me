@@ -23,6 +23,7 @@ highlight CursorLine cterm=inverse
 
 "enable mouse, if you need select copy either hold shift or set to 'v'
 set mouse=r
+set mouse+=a
 
 ">> Hotkeys
 set pastetoggle=<F3>

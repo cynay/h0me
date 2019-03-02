@@ -34,3 +34,10 @@ export PATH="/home/cyn/anaconda2/bin:$PATH"
 # VST Path export
 VST_PATH=/home/cyn/Music/VST
 export VST_PATH
+
+
+# cyn alias
+alias wrath='ssh 213.221.252.2 -p 443'
+alias pride='ssh pride.vendetta.ch -p 443'
+alias mond='ssh vendetta.ch'
+alias greed='ssh greed.vendetta.ch'
