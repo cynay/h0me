@@ -35,6 +35,8 @@ export PATH="/home/cyn/anaconda2/bin:$PATH"
 VST_PATH=/home/cyn/Music/VST
 export VST_PATH
 
+# git prompt
+source ~/h0me/polyglot.sh
 
 # cyn alias
 alias wrath='ssh 213.221.252.2 -p 443'
