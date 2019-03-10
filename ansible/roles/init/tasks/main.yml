@@ -120,6 +120,15 @@
     group=cyn
     mode=0644
 
+- name: copy dot.vimrc 
+  become: yes
+  copy:
+    src=vimrc
+    dest=/home/cyn/.vimrc
+    owner=cyn
+    group=cyn
+    mode=0644
+
 - name: copy motd
   become: yes
   copy:

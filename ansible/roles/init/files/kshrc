@@ -1,0 +1,8 @@
+# $OpenBSD: dot.kshrc
+#
+# ksh initialization
+
+alias ll='ls -laAh'
+alias pad='doas pkg_add '
+alias asciinema='LC_CTYPE=C.UTF-8 asciinema'
+
