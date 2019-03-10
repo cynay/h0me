@@ -129,6 +129,15 @@
     group=cyn
     mode=0644
 
+- name: copy gitprompt.sh
+  become: yes
+  copy:
+    src=gitprompt.sh
+    dest=/home/cyn/code/gitprompt.sh
+    owner=cyn
+    group=cyn
+    mode=0744
+
 - name: copy motd
   become: yes
   copy:
