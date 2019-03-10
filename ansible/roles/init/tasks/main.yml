@@ -102,6 +102,24 @@
     group=wheel
     mode=0664
 
+- name: copy dot.kshrc root
+  become: yes
+  copy:
+    src=kshrc
+    dest=/root/.kshrc
+    owner=root
+    group=wheel
+    mode=0644
+
+- name: copy dot.kshrc
+  become: yes
+  copy:
+    src=kshrc
+    dest=/home/cyn/.kshrc
+    owner=cyn
+    group=cyn
+    mode=0644
+
 - name: copy motd
   become: yes
   copy:

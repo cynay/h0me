@@ -40,4 +40,4 @@ export VST_PATH
 alias wrath='ssh 213.221.252.2 -p 443'
 alias pride='ssh pride.vendetta.ch -p 443'
 alias mond='ssh vendetta.ch'
-alias greed='ssh greed.vendetta.ch'
+alias greed='ssh -i .ssh/id_vulture_rsa.pub greed.vendetta.ch'

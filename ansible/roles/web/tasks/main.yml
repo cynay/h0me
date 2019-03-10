@@ -14,16 +14,30 @@
 - name: install pip virtualenv
   pip:
     name: virtualenv
+    executable: pip3
 
 - name: Copy GIT Repo
+  become: yes
   become_user: cyn
   git:
-    repo: 'https://{{gituser}}:{{gitpass}}@gitea.tostr.io/cyn/CryptoPi.git'
-    dest: /home/cyn/code
+    repo: 'https://{{gituser}}:{{gitpass}}@gitea.tostr.io/cyn/CynFlask.git'
+    dest: /home/cyn/code/CynFlask
+
+#- name: create virtual environment
+#  become: yes
+#  become_user: cyn
+#  command: python3 -m venv /home/cyn/code/CryptoPi/venv
 
 - name: install pip packages
-  become: true
   pip:
-    requirements: requirements.txt
-    virtualenv: /home/cyn/code/CryptoPi/venv
+    requirements: /home/cyn/code/CynFlask/etc/requirements.txt
+    virtualenv: /home/cyn/code/CynFlask/.venv
+    virtualenv_command: /usr/local/bin/python3 -m venv
+    #virtualenv_python: python3.6
 
+- name: fix python venv permissions
+  file: 
+    dest: /home/cyn/code/CynFlask/.venv
+    owner: cyn
+    group: cyn
+    recurse: yes
