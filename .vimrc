@@ -35,3 +35,6 @@ call pathogen#infect()
 "autocmd vimenter * NERDTree
 
 set paste
+
+" RUN current file
+nnoremap <F5> :!%:p<Enter>

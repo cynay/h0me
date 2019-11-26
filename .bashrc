@@ -9,7 +9,6 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-PATH=$PATH:$HOME/.opam/system/bin:$HOME/FFHS/TI-15-BE/Semesterarbeit/jflex-1.6.1/jflex/bin
 
 #Android dev
 PATH=$PATH:/usr/local/etc/android-studio/bin/:$HOME/Android/Sdk/platform-tools/
@@ -36,7 +35,7 @@ VST_PATH=/home/cyn/Music/VST
 export VST_PATH
 
 # git prompt
-#source ~/h0me/polyglot.sh
+source ~/h0me/polyglot.sh
 
 # cyn alias
 alias wrath='ssh 213.221.252.2 -p 443'
@@ -44,3 +43,4 @@ alias pride='ssh pride.vendetta.ch -p 443'
 alias mond='ssh vendetta.ch'
 alias greed='ssh -i .ssh/id_vultr_rsa.pub greed.vendetta.ch'
 alias aws='ssh -i .ssh/yannic_aws.pem root@ec2-34-244-129-28.eu-west-1.compute.amazonaws.com'
+export GOPATH=$HOME/go
