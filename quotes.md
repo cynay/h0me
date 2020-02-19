@@ -12,3 +12,6 @@
 
 "i'm not crazy my reality is just different than yours"
                                                        --- Cheshire Cat
+
+## Descartes
+„An allem ist zu zweifeln“ (lateinisch De omnibus dubitare) 

@@ -7,3 +7,5 @@
 [alias]
     a = add --all
 
+[http]
+	postBuffer = 157286400

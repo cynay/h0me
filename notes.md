@@ -28,4 +28,5 @@ layout.css.devPixelsPerPx
 NERDTree: https://github.com/scrooloose/nerdtree
 Airline: https://github.com/vim-airline/vim-airline
 
- 
+## MacBook Pro
+mbpX...
