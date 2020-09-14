@@ -32,6 +32,12 @@ export PATH="/home/cyn/Downloads/tools/anaconda3/bin:$PATH"
 # added by Anaconda2 4.2.0 installer
 export PATH="/home/cyn/anaconda2/bin:$PATH"
 
+# ruby env
+eval "$(rbenv init -)"
+
+# Postgres PATH
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
 # VST Path export
 VST_PATH=/home/cyn/Music/VST
 export VST_PATH
@@ -45,16 +51,20 @@ export PATH="$PATH:node_modules/.bin"
 # Some commands to ignoe in HISTORY
 export HISTIGNORE="&:ls:[bf]g:exit:pwd:clear:mount:umount:[ \t]*"
 
+# Homebrew github
+export HOMEBREW_GITHUB_API_TOKEN=cfcf96c8fc6d8240948ae607afcce96479d8add3
+
 # cyn alias
 alias ll='ls -lah'
 alias ba='cd ..'
 
-alias wrath='ssh 213.221.252.2 -p 443'
 alias pride='ssh pride.vendetta.ch -p 443'
+alias sloth='ssh 192.168.88.88'
 alias mond='ssh vendetta.ch'
-alias greed='ssh -i .ssh/id_vultr_rsa greed.vendetta.ch'
+alias greed='ssh -i .ssh/id_vultr_rsa greed.vendetta.ch -p 443'
 alias aws='ssh -i .ssh/yannic_aws.pem root@ec2-34-244-129-28.eu-west-1.compute.amazonaws.com'
 alias alp='ssh -t vendetta.ch ssh root@2a0a:e5c0:2:12:0:f0ff:fea9:c40a -p 443'
+alias brup="brew update && brew upgrade && brew cask upgrade --greedy --force && brew cleanup"
 export GOPATH=$HOME/go
 
 #alias crash='P=(" "  █ ░ ▒ ▓) while :;do printf "\e[$[RANDOM%LINES+1];$[RANDOM%COLUMNS+1]f${P[$RANDOM%5]}";done'
@@ -71,3 +81,4 @@ echo "
   ░  ▒  ▓██ ░▒░ ░ ░░   ░ ▒░     ▒   ▒▒ ░   ░        ░ ░  ░░ ░░   ░ ▒░  ░ ░░   ▓██ ░▒░ 
 ░       ▒ ▒ ░░     ░   ░ ░      ░   ▒    ░            ░      ░   ░ ░     ░░   ▒ ▒ ░░  
 "
+export PATH="$HOME/.cargo/bin:$PATH"

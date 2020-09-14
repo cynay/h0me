@@ -17,7 +17,7 @@
     - name: add email to aliases
       become: yes
       lineinfile: dest=/etc/mail/aliases
-                  line="root{{':'}} cynays@gmail.com, otto@tostr.io"
+                  line="root{{':'}} cynays@gmail.com"
                   insertafter=EOF
                   state=present
                   regexp="^root.*"
@@ -33,10 +33,10 @@
           - wget
           - git
           - kcgi
-          - python--%3.6
+          - python--%3.8
           - py3-pip
           - py3-setuptools
-          - rsync
+          - rsync--
           - screen--
 
     - name: disallow login with empty pw
@@ -63,7 +63,7 @@
     - name: copy motd
       become: yes
       copy:
-        src=motd.template
+        src=sloth.motd
         dest=/etc/motd
         owner=root
         group=operator
