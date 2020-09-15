@@ -52,7 +52,7 @@ export PATH="$PATH:node_modules/.bin"
 export HISTIGNORE="&:ls:[bf]g:exit:pwd:clear:mount:umount:[ \t]*"
 
 # Homebrew github
-export HOMEBREW_GITHUB_API_TOKEN=cfcf96c8fc6d8240948ae607afcce96479d8add3
+#export HOMEBREW_GITHUB_API_TOKEN=<KEY>
 
 # cyn alias
 alias ll='ls -lah'
